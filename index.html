@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Disparo grupos</title>
+
+
+  <script src="https://fileschat.sfo2.cdn.digitaloceanspaces.com/public/libs/wlclient.js"></script>
+
+<script>
+  function initExtension() {
+    if (typeof window.WlExtension !== 'undefined' && window.WlExtension.initialize) {
+      window.WlExtension.initialize({
+        buttons: {
+          "attendance-list": [
+            {
+              text: "Disparo grupos",
+              callback: () => {
+                window.WlExtension.modal({
+                  url: "https://send-group.vercel.app",
+                  title: "Disparo grupos",
+                  maxWidth: "60%",
+                  height: "75%",
+                });
+              },
+            },
+          ],
+        },
+      });
+    } else {
+      setTimeout(initExtension, 100);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initExtension);
+  } else {
+    initExtension();
+  }
+</script>
+</head>
+<body></body>
+</html>
